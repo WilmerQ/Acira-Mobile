@@ -1,0 +1,25 @@
+page-registro {
+    .color-header {
+        color: darkgrey !important;
+        text-align: center;
+    }
+
+    .displayed {
+        display: block;
+        margin-left: auto;
+        margin-right: auto }
+
+    .conditions{
+            padding: 15px;
+    }
+          
+    .conditions ion-checkbox{
+             float: left;
+             margin-right: 8px;
+    }
+          
+    .conditions ion-label{
+            float: left;
+            width: 70%;
+    }
+}

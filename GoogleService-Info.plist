@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>462731358596-durtis4jbsoram4b3bh9f2t2so937lpt.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.462731358596-durtis4jbsoram4b3bh9f2t2so937lpt</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDa0vbHXvPSBHtujqp8olQ8ETmjC_0-Wks</string>
+	<key>GCM_SENDER_ID</key>
+	<string>462731358596</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>co.acira</string>
+	<key>PROJECT_ID</key>
+	<string>acira-v1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>acira-v1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:462731358596:ios:d8d2fcf2a728dd60</string>
+	<key>DATABASE_URL</key>
+	<string>https://acira-v1.firebaseio.com</string>
+</dict>
+</plist>

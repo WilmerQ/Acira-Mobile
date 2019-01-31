@@ -1,0 +1,50 @@
+<ion-list *ngIf="tipoPopover == 'mapa'">
+  <ion-list-header>
+    <ion-icon name="ios-options"></ion-icon>
+    Configuraciones
+  </ion-list-header>
+  <ion-item>
+    <ion-label>
+      <ion-icon name="ios-walk-outline"></ion-icon>
+      Ruta linea recta
+    </ion-label>
+    <ion-toggle [(ngModel)]="rutaDirecta"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      <ion-icon name="ios-car"></ion-icon>
+      Ruta en automóvil
+    </ion-label>
+    <ion-toggle [(ngModel)]="rutaVehicular"></ion-toggle>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="tipoPopover == 'general'">
+  <ion-list-header padding-left padding-top>
+    <ion-icon name="ios-options"></ion-icon>
+    Opciones
+  </ion-list-header>
+  <button ion-item (click)="this.viewCtrl.dismiss()" [navPush]='"RegistroPage"' [navParams]="{actualizar: true}">
+    <ion-icon name="ios-person"></ion-icon>
+    Mi Perfil
+  </button>
+  <button ion-item (click)="shareApp()">
+    <ion-icon name="share"></ion-icon>
+    Compartir
+  </button>
+  <button ion-item (click)="showConfirm()">
+    <ion-icon name="ios-star"></ion-icon>
+    Calificar app
+  </button>
+  <button ion-item (click)="pagfacebook()">
+    <ion-icon name="logo-facebook"></ion-icon>
+    Pag. Facebook
+  </button>
+  <button ion-item (click)="terminos()">
+    <ion-icon name="md-clipboard"></ion-icon>
+    términos y condiciones
+  </button>
+  <button ion-item (click)="this.viewCtrl.dismiss('cerrarSesion')">
+    <ion-icon name="md-log-out"></ion-icon>
+    Cerrar sesión</button>
+</ion-list>

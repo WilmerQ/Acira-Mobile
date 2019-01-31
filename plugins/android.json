@@ -1,0 +1,67 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "phonegap-plugin-push": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "co.acira"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "co.acira"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "co.acira"
+    }
+  }
+}

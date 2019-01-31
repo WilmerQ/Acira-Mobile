@@ -1,0 +1,7 @@
+{
+  "name": "ACIRA",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

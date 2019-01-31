@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <script data-ionic="inject">
+    (function(w){var i=w.Ionic=w.Ionic||{};i.version='^3.9.2';i.angular='5.2.10';i.staticDir='build/';})(window);
+  </script>
+  <meta charset="UTF-8">
+  <title>Ionic App</title>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4e8ef7">
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- cordova.js required for cordova apps -->
+  <script src="cordova.js"></script>
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+    }
+  </script>-->
+
+  <link href="build/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app></ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+
+  <script src="https://maps.google.com/maps/api/js?key=AIzaSyCvm-o7RCiD7oAZJ33RL5OZWs6QVAHDNwQ"></script>
+
+  <!-- The vendor js is generated during the build process
+       It contains all of the dependencies in node_modules -->
+  <script src="build/vendor.js"></script>
+
+  <!-- The main bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
+
+  <script type="text/javascript">
+    myService = "";
+    serviceRunning = "";
+
+    document.addEventListener('deviceready', function () {
+      var serviceName = 'com.red_folder.phonegap.plugin.backgroundservice.MyService';
+      var factory = cordova.require('com.red_folder.phonegap.plugin.backgroundservice.BackgroundService');
+      myService = factory.create(serviceName);
+    }, true);
+
+    function getStatus() {
+      return new Promise(function (resolve, reject) {
+        function displayResult(data) {
+          console.log(data);
+          resolve(data.ServiceRunning);
+        }
+        myService.getStatus(function (r) { displayResult(r) }, function (e) { displayError(e) });
+      });
+    }
+
+    function displayError(data) {
+      alert("We have an error");
+    }
+
+    function updateHandler(data) {
+      console.log(data);
+      if (data.LatestResult != null) {
+        try {
+          console.log(data.LatestResult.Message);
+        } catch (err) {
+        }
+      }
+    }
+
+    function go() {
+      console.log("**********************aqui en funcion go");
+      myService.getStatus(function (r) { startService(r) }, function (e) { displayError(e) });
+    }
+
+    function startService(data) {
+      if (data.ServiceRunning) {
+        enableTimer(data);
+      } else {
+        myService.registerForBootStart(function (r) { console.log('Service registerForBootStart sucess') }, function (e) { displayError(e) });
+        myService.startService(function (r) { enableTimer(r) }, function (e) { displayError(e) });
+      }
+    }
+
+    function enableTimer(data) {
+      if (data.TimerEnabled) {
+        registerForUpdates(data);
+      } else {
+        myService.enableTimer(1000 * 10, function (r) { registerForUpdates(r) }, function (e) { displayError(e) });
+      }
+    }
+
+    function registerForUpdates(data) {
+      if (!data.RegisteredForUpdates) {
+        myService.registerForUpdates(function (r) { updateHandler(r) }, function (e) { console.log(e) });
+      }
+    }
+
+    function stopService() {
+      myService.stopService(function (r) { console.log('Service Stopped'); },
+        function (e) { alert('Error while stopping the service.') });
+    }
+
+  </script>
+
+  <script type="text/javascript">
+
+    function approve(data) {
+      console.log('aqui en approve index****************');
+      console.log(Object.values(data) + '----------------');
+
+      for (let i = 0; i < Object.values(data).length; i++) {
+        console.log("objeto " + Object.values(data)[i] + " i " + i);
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!--
+  Generated template for the RegistroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-title class="color-header">Datos de Registro</ion-title>
+        </ion-col>
+        <ion-col col-2>
+          <img alt="logo" class="displayed" height="28" src="assets/img/logo_app.png">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form id="form1" [formGroup]="myForm" novalidate>
+    <ion-item>
+      <ion-icon name="ios-person" item-right></ion-icon>
+      <ion-label floating>Nombre Completo</ion-label>
+      <ion-input formControlName="nombrecompleto" type="text"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="myForm.get('nombrecompleto').errors && myForm.get('nombrecompleto').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('nombrecompleto').hasError('required')">Se requiere el campo</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-grid-outline" item-right></ion-icon>
+      <ion-label floating>Número de identificación</ion-label>
+      <ion-input formControlName="identificacion" type="number"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('identificacion').errors && myForm.get('identificacion').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('required')">Se requiere el campo</p>
+      <p color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('pattern')">No coincide con el formato</p>
+      <p color="danger" ion-text *ngIf="myForm.get('identificacion').hasError('identificacionInUse')">Esta
+        identificación ya se encuentra en uso.</p>
+    </ion-item>
+
+    <button ion-button icon-end block (tap)="presentActionSheet()" *ngIf="!actualizar" [style.background-color]="colorBotton">
+      {{ textBotton }}
+      <ion-icon name="barcode"></ion-icon>
+    </button>
+
+    <ion-item>
+      <ion-icon name="phone-portrait" item-right></ion-icon>
+      <ion-label floating>Celular</ion-label>
+      <ion-input formControlName="celular" type="number"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('celular').errors && myForm.get('celular').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('celular').hasError('required')">Se requiere el campo</p>
+      <p color="danger" ion-text *ngIf="myForm.get('celular').hasError('pattern')">No coincide con el formato</p>
+      <p color="danger" ion-text *ngIf="myForm.get('celular').hasError('telefonoInUse')">Esta telefono ya se encuentra
+        en uso.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-at" item-right></ion-icon>
+      <ion-label floating>Correo electrónico</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Se requiere el campo</p>
+      <p color="danger" ion-text *ngIf="myForm.get('email').hasError('email')">No coincide con el formato</p>
+    </ion-item>
+
+    <!--<ion-item>
+      <ion-label>posee codigo familiar?</ion-label>
+      <ion-toggle ios (ionChange)="updateCucumber()" checked="false"></ion-toggle>
+    </ion-item>-->
+
+    <ion-item>
+      <ion-label>Ciudad</ion-label>
+      <ion-select interface="action-sheet" (ionChange)="ionChangeCiudad($event)">
+        <ion-option *ngFor="let c of ciudades">{{c.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="ciudadSelecionada">
+      <ion-label>Barrio</ion-label>
+      <ion-select (ionChange)="ionChangeBarrio($event)">
+        <ion-option *ngFor="let b of barrios">{{b.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="barrioSelecionado">
+      <ion-icon name="ios-person" item-right></ion-icon>
+      <ion-label floating>Dirección de residencia </ion-label>
+      <ion-input formControlName="direccion" type="text"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="myForm.get('direccion').errors && myForm.get('direccion').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('direccion').hasError('required')">Se requiere el campo</p>
+    </ion-item>
+
+    <ion-item *ngIf="actualizar">
+      <ion-icon name="ios-people" item-right></ion-icon>
+      <ion-label floating>Código familiar (Código estudiantil)</ion-label>
+      <ion-input formControlName="codigofamiliar" type="number"></ion-input>
+    </ion-item>
+    <!--<ion-item *ngIf="myForm.get('codigofamiliar').errors && myForm.get('codigofamiliar').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('codigofamiliar').hasError('required')">Se requiere el campo</p>
+      <p color="danger" ion-text *ngIf="myForm.get('codigofamiliar').hasError('minlength')">Mínimo 8 números</p>
+    </ion-item>-->
+
+    <ion-item>
+      <ion-icon name="ios-person" item-right></ion-icon>
+      <ion-label floating>nombre de Usuario</ion-label>
+      <ion-input formControlName="nombreusuario" type="text" (ionChange)="setFilteredItems()"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('nombreusuario').errors && myForm.get('nombreusuario').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('nombreusuario').hasError('required')">Se requiere el campo</p>
+      <p color="danger" ion-text *ngIf="myForm.get('nombreusuario').hasError('minlength')">Mínimo 5 Caracteres</p>
+      <p color="danger" ion-text *ngIf="myForm.get('nombreusuario').hasError('pattern')">No coincide con el formato</p>
+      <p color="danger" ion-text *ngIf="myForm.get('nombreusuario').hasError('nombreUsuarioInUse')">nombre de usuario
+        no disponible.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-key" item-right></ion-icon>
+      <ion-label floating>Contraseña</ion-label>
+      <ion-input formControlName="contrasena" type="password" (ionChange)="setFilterPassword()"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="myForm.get('contrasena').errors && myForm.get('contrasena').dirty">
+      <p color="danger" ion-text [hidden]="!myForm.get('contrasena').hasError('required')">Se requiere el campo.</p>
+      <p color="danger" ion-text [hidden]="!myForm.get('contrasena').hasError('mayuscula')">Este campo requiere mínimo
+        una MAYÚSCULA.</p>
+      <p color="danger" ion-text [hidden]="!myForm.get('contrasena').hasError('numero')">Este campo requiere mínimo un
+        numero.</p>
+      <p color="danger" ion-text [hidden]="!myForm.get('contrasena').hasError('pattern')">No coincide con el formato,
+        Mínimo 6 Caracteres.</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-key" item-right></ion-icon>
+      <ion-label floating>Confirmación</ion-label>
+      <ion-input formControlName="confirmacion" type="password" (ionChange)="setFilterConfimacion()"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('confirmacion').errors && myForm.get('confirmacion').dirty">
+      <p color="danger" ion-text [hidden]="!myForm.get('confirmacion').hasError('required')">Se requiere el campo</p>
+      <p color="danger" ion-text [hidden]="!myForm.get('confirmacion').hasError('mayuscula')">Este campo requiere
+        mínimo una MAYÚSCULA</p>
+      <p color="danger" ion-text [hidden]="!myForm.get('confirmacion').hasError('numero')">Este campo requiere mínimo
+        un numero</p>
+      <p color="danger" ion-text [hidden]="!myForm.get('confirmacion').hasError('pattern')">No coincide con el formato,
+        Mínimo 6 Caracteres</p>
+    </ion-item>
+    <div class="conditions">
+      <ion-checkbox name="agreement" formControlName="terminos">
+      </ion-checkbox>
+      <a href="{{terminos()}}">Acepto términos y condiciones.</a>
+    </div>
+
+    <div no-padding>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-end block (tap)="preRegistro()" *ngIf="!actualizar" style="background: #ed7425"
+              [disabled]="myForm.invalid">
+              Registrarse
+              <ion-icon name="ios-filing-outline"></ion-icon>
+            </button>
+            <button ion-button icon-end block (tap)="doActualizar()" *ngIf="actualizar" style="background: #ed7425"
+              [disabled]="myForm.invalid ">
+              Actualizar
+              <ion-icon name="ios-filing-outline"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>

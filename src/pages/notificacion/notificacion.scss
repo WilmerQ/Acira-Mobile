@@ -1,0 +1,38 @@
+page-notificacion {  
+    ion-content{
+        background: rgb(229, 227, 223);
+        #map {
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transition: opacity 150ms ease-in;
+          display: block;
+          &.show-map{
+            opacity: 1;
+          }
+        }
+
+        .displayed {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: auto;
+          margin-bottom: auto;
+         }
+
+         .center-fab {
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+        }
+
+        .Absolute-Center {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: flex-end !important;
+          //align-content: flex-end !important;
+          //height: 100%;
+          width: 100%;
+        }
+      }
+}

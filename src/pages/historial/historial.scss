@@ -1,0 +1,24 @@
+page-historial {
+
+      .list .item.item-accordion {
+        transition: 0.05s all linear;
+      }
+      .list .item.item-accordion.ng-hide {
+        line-height: 0px;
+      }
+      .list .item.item-accordion.ng-hide-add,
+      .list .item.item-accordion.ng-hide-remove {
+        display: block !important;
+      }
+      .list {
+        $list-ios-margin-top: 0px;
+        $list-md-margin-top: 0px;
+        $list-wp-margin-top: 0px;
+      }
+      
+   .parkmap{
+        height: 300px;
+        //width: 100%;
+        //max-width: none;
+      }
+}

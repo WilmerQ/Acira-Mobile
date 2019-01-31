@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "462731358596",
+    "firebase_url": "https://acira-v1.firebaseio.com",
+    "project_id": "acira-v1",
+    "storage_bucket": "acira-v1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462731358596:android:d8d2fcf2a728dd60",
+        "android_client_info": {
+          "package_name": "co.acira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462731358596-24ae3n3ou3ganc61pfu289hk1mclq946.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC80ZdOI2dvYTurtr2W_mcaNMBCf8Jz8BE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

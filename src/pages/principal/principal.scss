@@ -1,0 +1,38 @@
+page-principal {
+           .color-header {
+                text-align: center;
+            }
+        
+            .displayed {
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: auto;
+              margin-bottom: auto;
+             }
+        
+              textarea {
+                resize: both;
+             }
+        
+             #myInput {
+                width: calc(100%);
+                border: 0;
+                border-radius: 0;
+                background: transparent;
+            }
+}
+
+/*ion-navbar.toolbar {
+  min-height: 35px;
+}*/
+
+/*.md,
+.ios,
+.wp {
+  page-home {
+    ion-header {
+      height: 40px;//by default 56px
+    }
+  }
+}*/
